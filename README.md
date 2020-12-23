@@ -14,11 +14,11 @@ Used tools:
 [CanvasJS](https://canvasjs.com/) - responsive HTML5 charting library with a simple API.
 
 ### requirements
+
 1. First of all you need API KEY for getting weather archive. Go [here](https://www.visualcrossing.com/weather/weather-data-services) and register. Put a key to [env.js](https://github.com/ganochenkodg/weather-ab/blob/main/src/env.js).
 2. [Get](https://developers.google.com/maps/premium/apikey/places-apikey) an API key for google places and write it to the [env.js](https://github.com/ganochenkodg/weather-ab/blob/main/src/env.js) too.
 
-###
-## Getting started
+### usage
 
 1. install all project dependencies and run app in dev mode
 
