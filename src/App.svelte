@@ -218,7 +218,7 @@
 
 <div>
 	<Row>
-		<Col xs="3">
+		<Col md="3">
 		<InputGroup>
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>CITY A</InputGroupText>
@@ -226,7 +226,7 @@
 			<Input id="cityAinput" type="text" placeholder="NAME" />
 		</InputGroup>
 		</Col>
-		<Col xs="3">
+		<Col md="3">
 		<InputGroup>
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>CITY B</InputGroupText>
@@ -234,7 +234,7 @@
 			<Input id="cityBinput" type="text" bind:value={cityB} placeholder="NAME" />
 		</InputGroup>
 		</Col>
-		<Col xs="2">
+		<Col md="2">
 		<InputGroup>
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>FROM</InputGroupText>
@@ -242,7 +242,7 @@
 			<Input type="date" id="startDateInput" bind:value={startDate} />
 		</InputGroup>
 		</Col>
-		<Col xs="2">
+		<Col md="2">
 		<InputGroup>
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>DAYS</InputGroupText>
@@ -254,7 +254,7 @@
 			</Input>
 		</InputGroup>
 		</Col>
-		<Col xs="2">
+		<Col md="2">
 		<Button block color="success" on:click={Compare}>Compare</Button>
 		</Col>
 	</Row>
