@@ -1,0 +1,52 @@
+kind: pipeline
+name: Build
+
+trigger:
+  branches:
+    - master
+  event:
+    - push
+
+steps:
+  - name: build first layer
+    image: plugins/docker
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    network_mode: host
+    settings:
+      repo: homelab:5000/climate-ab-build
+      insecure: true
+      target: build
+      cache_from: homelab:5000/climate-ab-build:latest
+      tags:
+        - latest
+  - name: build final image
+    image: plugins/docker
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    network_mode: host
+    settings:
+      repo: homelab:5000/climate-ab
+      insecure: true
+      cache_from:
+        - homelab:5000/climate-ab:${DRONE_BRANCH}
+        - homelab:5000/climate-ab-build:latest
+      tags:
+        - ${DRONE_COMMIT_SHA:0:7}
+        - ${DRONE_BRANCH}
+  - name: deploy
+    image: quay.io/hectorqin/drone-kubectl
+    network_mode: host
+    settings:
+      kubernetes_template: deployment.yml
+      kubernetes_namespace: default
+    environment:
+      KUBERNETES_SERVER: https://127.0.0.1:6443
+      KUBERNETES_CERT: PUT_CERT_HERE
+      KUBERNETES_TOKEN: PUT_TOKEN_HERE
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

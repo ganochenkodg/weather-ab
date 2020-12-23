@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: climate-ab
+  labels:
+    app: climate-ab
+spec:
+  selector:
+    matchLabels:
+      app: climate-ab
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: climate-ab
+        branch: ${DRONE_COMMIT_BRANCH}
+        commit: ${DRONE_COMMIT_SHA}
+    spec:
+      containers:
+      - name: climate-ab
+        image: homelab:5000/climate-ab:${DRONE_COMMIT_SHA:0:7}
+        ports:
+        - containerPort: 80
+          name: http
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: climate-ab-service
+spec:
+  selector:
+    app: climate-ab
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: climate-ab-upstream
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      access_log /var/log/nginx/climate-ab.access.log;
+      error_log /var/log/nginx/climate-ab.error.log;
+spec:
+  rules:
+  - host: weather.homelab
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: climate-ab-service
+          servicePort: 80
