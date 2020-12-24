@@ -258,7 +258,6 @@
 		<Button block color="success" on:click={Compare}>Compare</Button>
 		</Col>
 	</Row>
-	<p></p>
 	<h6>{messageAlert}</h6>
 	<Table responsive bordered class="table table-sm">
 		<thead>
