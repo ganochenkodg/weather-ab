@@ -1,4 +1,6 @@
 # weather-ab
+[DEMO HERE](https://weather-ab.netlify.app)
+
 ![](https://github.com/ganochenkodg/weather-ab/blob/main/screenshot.png)
 
 ### description
