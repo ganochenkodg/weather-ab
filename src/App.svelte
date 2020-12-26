@@ -212,7 +212,7 @@
 </style>
 
 <svelte:head>
-	<script src={'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + ' &libraries=places'} on:load={setAutocomplete}></script>
+	<script src={'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + ' &libraries=places&language=en'} on:load={setAutocomplete}></script>
 	<script src="canvasjs.min.js"></script>
 </svelte:head>
 
