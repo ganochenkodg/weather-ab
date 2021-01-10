@@ -224,7 +224,7 @@
 <div>
 	<Row>
 		<Col md="3" class="mb-2">
-		<InputGroup>
+		<InputGroup size="sm">
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>CITY A</InputGroupText>
 			</InputGroupAddon>
@@ -232,7 +232,7 @@
 		</InputGroup>
 		</Col>
 		<Col md="3" class="mb-2">
-		<InputGroup>
+		<InputGroup size="sm">
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>CITY B</InputGroupText>
 			</InputGroupAddon>
@@ -240,7 +240,7 @@
 		</InputGroup>
 		</Col>
 		<Col md="2" class="mb-2">
-		<InputGroup>
+		<InputGroup size="sm">
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>FROM</InputGroupText>
 			</InputGroupAddon>
@@ -248,7 +248,7 @@
 		</InputGroup>
 		</Col>
 		<Col md="2" class="mb-2">
-		<InputGroup>
+		<InputGroup size="sm">
 			<InputGroupAddon addonType="prepend">
 				<InputGroupText>DAYS</InputGroupText>
 			</InputGroupAddon>
@@ -260,7 +260,7 @@
 		</InputGroup>
 		</Col>
 		<Col md="2" class="mb-2">
-		<Button block color="success" on:click={Compare}>Compare</Button>
+		<Button size="sm" block color="primary" on:click={Compare}>Compare</Button>
 		</Col>
 	</Row>
 	<h6>{messageAlert}</h6>
